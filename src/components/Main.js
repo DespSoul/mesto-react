@@ -68,7 +68,7 @@ function Main(props) {
           {cards.map((card) => (
             <Card
               dataCard={card}
-              id={card._id}
+              key={card._id}
               onCardClick={props.onCardClick}
             />
           ))}

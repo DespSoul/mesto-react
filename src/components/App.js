@@ -11,8 +11,10 @@ function App() {
     React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
-  const [ selectedCard, setSelectedCard] = React.useState({name: "" , link: ""})
-
+  const [selectedCard, setSelectedCard] = React.useState({
+    name: "",
+    link: "",
+  });
 
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
@@ -27,27 +29,31 @@ function App() {
   }
 
   function handleCardClick(card) {
-    setSelectedCard(card) 
+    setSelectedCard(card);
   }
 
   function closePopup() {
     setEditProfilePopupOpen(false);
     setAddPlacePopupOpen(false);
     setEditAvatarPopupOpen(false);
-    setSelectedCard({name: "" , link: ""})
+    setSelectedCard({ name: "", link: "" });
   }
 
   return (
     <>
       <Header />
+
       <Main
         onEditAvatar={handleEditAvatarClick}
         onEditProfile={handleEditProfileClick}
         onAddPlace={handleAddPlaceClick}
         onCardClick={handleCardClick}
       />
+
       <Footer />
+
       <ImagePopup card={selectedCard} onClose={closePopup} />
+      
       <PopupWithForm
         name="popup-profile"
         title="Редактировать профиль"
