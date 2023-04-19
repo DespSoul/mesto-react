@@ -1,18 +1,24 @@
 import PopupWithForm from "./PopupWithForm";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 function AddPlacePopup(props) {
-
-  const inputRefName = useRef()
-  const inputRefLink = useRef()
+  const inputRefName = useRef();
+  const inputRefLink = useRef();
+  
+  useEffect(() => {
+    inputRefName.current.value = "";
+    inputRefLink.current.value = "";
+  }, [props.isOpen]);
 
   function handleAddPlaceSubmit(e) {
     e.preventDefault();
-  
-    props.onAddPlace({ name: inputRefName.current.value, link: inputRefLink.current.value})
-    inputRefName.current.value = ''
-    inputRefLink.current.value = ''
+
+    props.onAddPlace({
+      name: inputRefName.current.value,
+      link: inputRefLink.current.value,
+    });
   }
+
   return (
     <PopupWithForm
       name="popup_place"
@@ -48,4 +54,4 @@ function AddPlacePopup(props) {
   );
 }
 
-export default AddPlacePopup
+export default AddPlacePopup;
